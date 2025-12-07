@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="icon" src="Images/ZilantIcon.png" type="image/png">
+    <link rel="icon" href="Images/ZilantIcon.png" type="image/png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zilant Tech Solutions - Empowering Creators</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <style>
         * {
             margin: 0;
@@ -20,13 +21,21 @@
             overflow-x: hidden;
         }
 
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 300,
+            'GRAD' 0,
+            'opsz' 48;
+        }
+
         /* Navigation */
         nav {
             position: fixed;
             width: 100%;
             background: rgba(15, 15, 15, 0.95);
             backdrop-filter: blur(10px);
-            padding: 1.5rem 5%;
+            padding: 2rem 5%;
             box-shadow: 0 2px 20px rgba(139, 69, 255, 0.1);
             z-index: 1000;
             transition: all 0.3s ease;
@@ -34,7 +43,7 @@
         }
 
         nav.scrolled {
-            padding: 1rem 5%;
+            padding: 1.5rem 5%;
             background: rgba(10, 10, 10, 0.98);
         }
 
@@ -53,7 +62,7 @@
         }
 
         .logo-img {
-            height: 50px;
+            height: 65px;
             width: auto;
             transition: transform 0.3s ease;
         }
@@ -72,6 +81,7 @@
             text-decoration: none;
             color: #e0e0e0;
             font-weight: 500;
+            font-size: 1.1rem;
             transition: color 0.3s ease;
             position: relative;
         }
@@ -141,13 +151,6 @@
             gap: 4rem;
             align-items: center;
             z-index: 1;
-        }
-
-        .hero-text h1 {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            color: #ffffff;
-            animation: fadeInUp 1s ease;
         }
 
         .hero-text .tagline {
@@ -292,8 +295,9 @@
         }
 
         .service-icon {
-            font-size: 2.5rem;
+            font-size: 3rem;
             margin-bottom: 1.2rem;
+            color: #8b45ff;
         }
 
         .service-card h3 {
@@ -398,13 +402,12 @@
         .about-visual {
             background: linear-gradient(135deg, #8b45ff 0%, #6a1b9a 100%);
             border-radius: 20px;
-            height: 400px;
+            min-height: 400px;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 2rem;
-            font-weight: 700;
+            padding: 2rem;
             box-shadow: 0 20px 60px rgba(139, 69, 255, 0.3);
             border: 1px solid rgba(139, 69, 255, 0.3);
             position: relative;
@@ -420,6 +423,36 @@
             height: 200%;
             background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
             animation: rotate 20s linear infinite;
+            z-index: 1;
+        }
+
+        .about-visual h3 {
+            color: white;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .about-visual-image {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 15px;
+            position: relative;
+            z-index: 2;
+            mask-image: linear-gradient(to bottom, 
+                rgba(0, 0, 0, 0) 0%, 
+                rgba(0, 0, 0, 1) 10%, 
+                rgba(0, 0, 0, 1) 90%, 
+                rgba(0, 0, 0, 0) 100%);
+            -webkit-mask-image: linear-gradient(to bottom, 
+                rgba(0, 0, 0, 0) 0%, 
+                rgba(0, 0, 0, 1) 10%, 
+                rgba(0, 0, 0, 1) 90%, 
+                rgba(0, 0, 0, 0) 100%);
         }
 
         @keyframes rotate {
@@ -450,10 +483,10 @@
 
         .contact-info {
             display: flex;
-            justify-content: center;
-            gap: 3rem;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
             margin-bottom: 3rem;
-            flex-wrap: wrap;
         }
 
         .contact-item {
@@ -464,7 +497,8 @@
         }
 
         .contact-item-icon {
-            font-size: 2rem;
+            font-size: 2.5rem;
+            color: #8b45ff;
         }
 
         .contact-item a {
@@ -523,8 +557,8 @@
                 text-align: center;
             }
 
-            .hero-text h1 {
-                font-size: 3rem;
+            .hero-logo {
+                order: -1;
             }
 
             .hero-text .tagline {
@@ -548,27 +582,30 @@
             }
 
             .logo-img {
-                height: 40px;
+                height: 50px;
             }
 
             .service-grid {
                 grid-template-columns: 1fr;
             }
-
-            .contact-info {
-                flex-direction: column;
-                gap: 1.5rem;
-            }
         }
 
         @media (max-width: 480px) {
-            .hero-text h1 {
-                font-size: 2rem;
-            }
-
             .nav-links {
                 gap: 1rem;
                 font-size: 0.9rem;
+            }
+
+            .logo-img {
+                height: 45px;
+            }
+
+            nav {
+                padding: 1.5rem 5%;
+            }
+
+            nav.scrolled {
+                padding: 1rem 5%;
             }
         }
     </style>
@@ -607,7 +644,7 @@
         
         <div class="service-grid">
             <div class="service-card">
-                <div class="service-icon">🛠️</div>
+                <span class="material-symbols-outlined service-icon">build</span>
                 <h3>Technical Support Services</h3>
                 <p><strong>General IT Support:</strong> Hardware and software troubleshooting, system optimization, network configuration, cybersecurity consultation, and software management.</p>
                 <p><strong>Streaming-Specific Support:</strong></p>
@@ -622,7 +659,7 @@
             </div>
             
             <div class="service-card">
-                <div class="service-icon">📱</div>
+                <span class="material-symbols-outlined service-icon">manage_accounts</span>
                 <h3>Account & Platform Management</h3>
                 <p><strong>Account Setup & Configuration:</strong> Twitch, YouTube, and other platform account optimization, stream settings, and multi-platform integration.</p>
                 <p><strong>Moderation Solutions:</strong></p>
@@ -635,7 +672,7 @@
             </div>
             
             <div class="service-card">
-                <div class="service-icon">💻</div>
+                <span class="material-symbols-outlined service-icon">computer</span>
                 <h3>Equipment & Hardware Services</h3>
                 <p><strong>Streaming Equipment Setup:</strong> Camera, microphone, audio interface installation, lighting systems, capture cards, dual PC configurations, and peripheral setup.</p>
                 <p><strong>PC Building & Maintenance:</strong></p>
@@ -649,7 +686,7 @@
             </div>
             
             <div class="service-card">
-                <div class="service-icon">🎨</div>
+                <span class="material-symbols-outlined service-icon">palette</span>
                 <h3>Creative & Branding Services</h3>
                 <p><strong>Brand Identity Development:</strong> Logo design, brand style guides, channel art, overlay and alert design, custom emotes and badges, sub alert animations, and panel graphics.</p>
                 <p><strong>Video Production:</strong></p>
@@ -663,7 +700,7 @@
             </div>
             
             <div class="service-card">
-                <div class="service-icon">👥</div>
+                <span class="material-symbols-outlined service-icon">groups</span>
                 <h3>Community Management Solutions</h3>
                 <p><strong>Discord Server Services:</strong></p>
                 <ul>
@@ -677,7 +714,7 @@
             </div>
             
             <div class="service-card">
-                <div class="service-icon">🌍</div>
+                <span class="material-symbols-outlined service-icon">public</span>
                 <h3>Service Delivery</h3>
                 <p><strong>Local Services (Edmonton, Alberta):</strong> In-person consultations, system builds, on-site equipment installation, hardware troubleshooting, and direct training sessions.</p>
                 <p><strong>Remote Services (Worldwide):</strong></p>
@@ -710,7 +747,8 @@
                 <p>From custom development to creative design, we've got your back every step of the way.</p>
             </div>
             <div class="about-visual">
-                Your Vision, Our Expertise
+                <h3>Your Vision, Our Commitment</h3>
+                <img src="Images/ZilantTeam.png" alt="Zilant Tech Team" class="about-visual-image">
             </div>
         </div>
     </section>
@@ -721,15 +759,15 @@
         
         <div class="contact-info">
             <div class="contact-item">
-                <div class="contact-item-icon">📞</div>
+                <span class="material-symbols-outlined contact-item-icon">call</span>
                 <a href="tel:780-722-1415">780-722-1415</a>
             </div>
             <div class="contact-item">
-                <div class="contact-item-icon">📧</div>
+                <span class="material-symbols-outlined contact-item-icon">mail</span>
                 <a href="mailto:info@ZilantTech.ca">info@ZilantTech.ca</a>
             </div>
             <div class="contact-item">
-                <div class="contact-item-icon">📍</div>
+                <span class="material-symbols-outlined contact-item-icon">location_on</span>
                 <span>Edmonton, Alberta, Canada</span>
             </div>
         </div>
