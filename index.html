@@ -55,10 +55,12 @@
             height: 50px;
             width: auto;
             transition: transform 0.3s ease;
+            filter: drop-shadow(0 0 20px rgba(139, 69, 255, 0.5));
         }
 
         .logo-img:hover {
             transform: scale(1.05);
+            filter: drop-shadow(0 0 30px rgba(139, 69, 255, 0.7));
         }
 
         .nav-links {
@@ -150,10 +152,18 @@
         }
 
         .hero-text .tagline {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #8b45ff;
+            font-weight: 600;
+            animation: fadeInUp 1s ease 0.2s backwards;
+        }
+
+        .hero-text .mission {
+            font-size: 1.2rem;
             margin-bottom: 2.5rem;
             color: #b0b0b0;
-            animation: fadeInUp 1s ease 0.2s backwards;
+            animation: fadeInUp 1s ease 0.3s backwards;
         }
 
         .hero-logo {
@@ -245,12 +255,13 @@
 
         .service-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 5rem;
         }
 
         .service-card {
-            padding: 3rem 2rem;
+            padding: 2.5rem 2rem;
             background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
             border-radius: 20px;
             transition: all 0.3s ease;
@@ -282,20 +293,66 @@
         }
 
         .service-icon {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
+            font-size: 2.5rem;
+            margin-bottom: 1.2rem;
         }
 
         .service-card h3 {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             margin-bottom: 1rem;
             color: #ffffff;
         }
 
         .service-card p {
             color: #b0b0b0;
-            font-size: 1.05rem;
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 0.8rem;
+        }
+
+        .service-card ul {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 1rem;
+        }
+
+        .service-card li {
+            color: #999;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            padding-left: 1.5rem;
+            position: relative;
+            margin-bottom: 0.5rem;
+        }
+
+        .service-card li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #8b45ff;
+        }
+
+        .why-choose {
+            text-align: center;
+            max-width: 900px;
+            margin: 4rem auto 0;
+            padding: 3rem;
+            background: linear-gradient(135deg, rgba(139, 69, 255, 0.05) 0%, rgba(139, 69, 255, 0.02) 100%);
+            border-radius: 20px;
+            border: 1px solid rgba(139, 69, 255, 0.1);
+        }
+
+        .why-choose h3 {
+            font-size: 2rem;
+            color: #8b45ff;
+            margin-bottom: 1.5rem;
+        }
+
+        .why-choose p {
+            color: #b0b0b0;
+            font-size: 1.1rem;
             line-height: 1.8;
+            margin-bottom: 1rem;
         }
 
         /* About Section */
@@ -389,7 +446,42 @@
         .contact p {
             font-size: 1.2rem;
             color: #888;
+            margin-bottom: 2rem;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
             margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .contact-item-icon {
+            font-size: 2rem;
+        }
+
+        .contact-item a {
+            color: #8b45ff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: #9d5aff;
+        }
+
+        .contact-item span {
+            color: #b0b0b0;
+            font-size: 1.1rem;
         }
 
         .contact-button {
@@ -437,7 +529,11 @@
             }
 
             .hero-text .tagline {
-                font-size: 1.2rem;
+                font-size: 1.4rem;
+            }
+
+            .hero-text .mission {
+                font-size: 1rem;
             }
 
             .nav-links {
@@ -454,6 +550,15 @@
 
             .logo-img {
                 height: 40px;
+            }
+
+            .service-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 1.5rem;
             }
         }
 
@@ -488,7 +593,8 @@
         <div class="hero-content">
             <div class="hero-text">
                 <h1>Zilant Tech Solutions</h1>
-                <p class="tagline">Empowering Content Creators & Streamers with Cutting-Edge Tech Solutions</p>
+                <p class="tagline">Let us handle the tech so you can focus on creating.</p>
+                <p class="mission">Empowering Content Creators Through Comprehensive Technical & Creative Solutions</p>
                 <a href="#contact" class="cta-button">Get Started</a>
             </div>
             <div class="hero-logo">
@@ -503,40 +609,97 @@
         
         <div class="service-grid">
             <div class="service-card">
-                <div class="service-icon">🚀</div>
-                <h3>Tech Solutions</h3>
-                <p>Custom development, automation tools, and technical infrastructure designed to streamline your creative workflow and maximize efficiency.</p>
+                <div class="service-icon">🛠️</div>
+                <h3>Technical Support Services</h3>
+                <p><strong>General IT Support:</strong> Hardware and software troubleshooting, system optimization, network configuration, cybersecurity consultation, and software management.</p>
+                <p><strong>Streaming-Specific Support:</strong></p>
+                <ul>
+                    <li>OBS Studio, Streamlabs, and XSplit configuration</li>
+                    <li>Stream quality optimization (bitrate, resolution, encoding)</li>
+                    <li>Audio routing and mixing setup</li>
+                    <li>Multi-platform streaming configuration</li>
+                    <li>Capture card installation and troubleshooting</li>
+                    <li>Greenscreen and lighting setup assistance</li>
+                </ul>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">📱</div>
+                <h3>Account & Platform Management</h3>
+                <p><strong>Account Setup & Configuration:</strong> Twitch, YouTube, and other platform account optimization, stream settings, and multi-platform integration.</p>
+                <p><strong>Moderation Solutions:</strong></p>
+                <ul>
+                    <li>Bot setup (Nightbot, StreamElements, etc.)</li>
+                    <li>Custom command creation</li>
+                    <li>AutoMod and filtering configuration</li>
+                    <li>Moderator team training and guidelines development</li>
+                </ul>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">💻</div>
+                <h3>Equipment & Hardware Services</h3>
+                <p><strong>Streaming Equipment Setup:</strong> Camera, microphone, audio interface installation, lighting systems, capture cards, dual PC configurations, and peripheral setup.</p>
+                <p><strong>PC Building & Maintenance:</strong></p>
+                <ul>
+                    <li>Custom gaming/streaming PC builds</li>
+                    <li>Component selection and compatibility consultation</li>
+                    <li>System upgrades and repairs</li>
+                    <li>Performance benchmarking and optimization</li>
+                </ul>
+                <p><strong>Storage Solutions:</strong> NAS setup, cloud storage integration, backup solutions, and VOD archive management.</p>
             </div>
             
             <div class="service-card">
                 <div class="service-icon">🎨</div>
-                <h3>Creative Solutions</h3>
-                <p>Branding, graphic design, and visual content creation that helps you stand out and connect with your audience authentically.</p>
+                <h3>Creative & Branding Services</h3>
+                <p><strong>Brand Identity Development:</strong> Logo design, brand style guides, channel art, overlay and alert design, custom emotes and badges, sub alert animations, and panel graphics.</p>
+                <p><strong>Video Production:</strong></p>
+                <ul>
+                    <li>Video editing for highlights and compilations</li>
+                    <li>Thumbnail creation and optimization</li>
+                    <li>Titles, lower thirds, and elements design</li>
+                    <li>Short-form content editing (TikTok, YouTube Shorts, Reels)</li>
+                    <li>Color grading and audio enhancement</li>
+                </ul>
             </div>
             
             <div class="service-card">
-                <div class="service-icon">📊</div>
-                <h3>Stream Optimization</h3>
-                <p>Advanced analytics, overlays, and engagement tools to elevate your streaming experience and grow your community.</p>
+                <div class="service-icon">👥</div>
+                <h3>Community Management Solutions</h3>
+                <p><strong>Discord Server Services:</strong></p>
+                <ul>
+                    <li>Server creation and structure design</li>
+                    <li>Bot integration (MEE6, Dyno, custom bots)</li>
+                    <li>Role hierarchy and permissions setup</li>
+                    <li>Welcome systems and verification flows</li>
+                    <li>Moderation training and community guidelines</li>
+                </ul>
+                <p style="margin-top: 1rem; font-style: italic; color: #8b45ff;">*Most installs/services include education on proper use*</p>
             </div>
             
             <div class="service-card">
-                <div class="service-icon">🔧</div>
-                <h3>Technical Support</h3>
-                <p>Dedicated support and maintenance to keep your content creation systems running smoothly 24/7.</p>
+                <div class="service-icon">🌍</div>
+                <h3>Service Delivery</h3>
+                <p><strong>Local Services (Edmonton, Alberta):</strong> In-person consultations, system builds, on-site equipment installation, hardware troubleshooting, and direct training sessions.</p>
+                <p><strong>Remote Services (Worldwide):</strong></p>
+                <ul>
+                    <li>Virtual consultations via video call</li>
+                    <li>Remote desktop troubleshooting and configuration</li>
+                    <li>Digital asset delivery (graphics, videos, branding)</li>
+                    <li>Online training and knowledge transfer</li>
+                    <li>Ongoing remote support packages</li>
+                </ul>
             </div>
-            
-            <div class="service-card">
-                <div class="service-icon">💡</div>
-                <h3>Consulting</h3>
-                <p>Strategic guidance on platform growth, content strategy, and technical decision-making for creators at any stage.</p>
-            </div>
-            
-            <div class="service-card">
-                <div class="service-icon">🎯</div>
-                <h3>Custom Development</h3>
-                <p>Bespoke tools and integrations built specifically for your unique needs and creative vision.</p>
-            </div>
+        </div>
+
+        <div class="why-choose">
+            <h3>Why Choose Zilant Tech Solutions?</h3>
+            <p><strong>Creator-Focused Expertise:</strong> Deep understanding of the unique technical and creative needs of content creators from fellow creators with IT and multimedia backgrounds.</p>
+            <p><strong>Comprehensive Solutions:</strong> One-stop shop for both technical and creative services.</p>
+            <p><strong>Flexible Service Options:</strong> Local and remote support to accommodate any creator's location.</p>
+            <p><strong>Personalized Approach:</strong> Tailored solutions that align with your brand and content style.</p>
+            <p><strong>Ongoing Support:</strong> Available for troubleshooting and adjustments as your channel grows.</p>
         </div>
     </section>
 
@@ -545,7 +708,7 @@
             <div class="about-text">
                 <h2>About Zilant Tech</h2>
                 <p>We're a dedicated team passionate about empowering content creators and streamers with the technology and creative tools they need to succeed.</p>
-                <p>Our mission is to bridge the gap between technical complexity and creative expression, providing solutions that let you focus on what you do best—creating amazing content.</p>
+                <p>Based in Edmonton, Alberta, we offer both local and remote services designed to eliminate technical barriers and enhance online presence, allowing creators to focus on what they do best—creating content.</p>
                 <p>From custom development to creative design, we've got your back every step of the way.</p>
             </div>
             <div class="about-visual">
@@ -557,11 +720,28 @@
     <section class="contact" id="contact">
         <h2>Ready to Level Up?</h2>
         <p>Let's discuss how we can help transform your content creation journey</p>
-        <a href="mailto:contact@zilanttech.com" class="contact-button">Get In Touch</a>
+        
+        <div class="contact-info">
+            <div class="contact-item">
+                <div class="contact-item-icon">📞</div>
+                <a href="tel:780-722-1415">780-722-1415</a>
+            </div>
+            <div class="contact-item">
+                <div class="contact-item-icon">📧</div>
+                <a href="mailto:info@ZilantTech.ca">info@ZilantTech.ca</a>
+            </div>
+            <div class="contact-item">
+                <div class="contact-item-icon">📍</div>
+                <span>Edmonton, Alberta, Canada</span>
+            </div>
+        </div>
+
+        <a href="mailto:info@ZilantTech.ca" class="contact-button">Get In Touch</a>
     </section>
 
     <footer>
-        <p>&copy; 2024 Zilant Tech Solutions. All rights reserved.</p>
+        <p>&copy; 2026 Zilant Tech Solutions. All rights reserved.</p>
+        <p style="margin-top: 0.5rem; font-size: 0.85rem;">Serving Creators Locally & Across The Globe</p>
     </footer>
 
     <script>
