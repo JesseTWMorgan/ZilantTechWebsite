@@ -1041,33 +1041,6 @@
         }
     });
 
-    // Smooth scrolling for nav links
-    document.querySelectorAll('.nav-links a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            
-            const targetId = this.getAttribute('href');
-            if (targetId === '#') return; // Skip the modal button
-            
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-                // Close modal if open
-                if (modal.classList.contains('active')) {
-                    closeModal();
-                }
-                
-                // Calculate position, accounting for fixed navbar
-                const navbarHeight = document.getElementById('navbar').offsetHeight;
-                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
-                
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
-
     // Contact Form Modal
     const modal = document.getElementById('contactModal');
     const closeModalBtn = document.getElementById('closeModal');
@@ -1082,13 +1055,13 @@
     function openModal(e) {
         e.preventDefault();
         modal.classList.add('active');
-        document.body.classList.add('modal-open'); // Add class to body
+        document.body.classList.add('modal-open');
     }
 
     // Close modal
     function closeModal() {
         modal.classList.remove('active');
-        document.body.classList.remove('modal-open'); // Remove class from body
+        document.body.classList.remove('modal-open');
         formMessage.className = 'form-message';
         formMessage.textContent = '';
         contactForm.reset();
@@ -1156,6 +1129,35 @@
             submitBtn.disabled = false;
             submitBtn.textContent = 'Send Message';
         }
+    });
+
+    // Handle nav link clicks for smooth scrolling
+    document.querySelectorAll('a[href^="#"]:not([href="#"])').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            // Don't handle clicks on modal buttons
+            if (this.id === 'navContactBtn' || 
+                this.id === 'heroContactBtn' || 
+                this.id === 'contactFormBtn' ||
+                this.classList.contains('nav-cta-button')) {
+                return;
+            }
+            
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            
+            if (targetElement) {
+                // Calculate position, accounting for fixed navbar
+                const navbarHeight = document.getElementById('navbar').offsetHeight;
+                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
     });
 </script>
 </body>
