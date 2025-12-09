@@ -103,16 +103,38 @@
         padding: 0.5rem 0;
     }
     
-    .nav-cta-button {
+    /* Specifically target the Get In Touch button in mobile menu */
+    .nav-links li:last-child {
+        display: flex;
+        justify-content: center;
         margin-top: 1rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid rgba(139, 69, 255, 0.2);
+    }
+    
+    .nav-cta-button {
+        margin-top: 0;
         width: 200px;
         text-align: center;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
     }
 }
 
 @media (max-width: 480px) {
     .nav-links {
         max-width: 100%;
+    }
+    
+    .nav-links a {
+        font-size: 1.1rem;
+    }
+    
+    .nav-links li:last-child {
+        width: 100%;
+        display: flex;
+        justify-content: center;
     }
     
     .nav-cta-button {
@@ -122,32 +144,12 @@
     }
 }
 
-/* Smooth scroll fix for Chrome */
-html {
-    scroll-behavior: smooth !important;
-}
-
-/* Prevent horizontal scroll */
-body {
-    max-width: 100vw;
-    overflow-x: hidden;
-}
-
-/* Nav overlay for mobile menu */
-.nav-overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(3px);
-    z-index: 999;
-}
-
-.nav-overlay.active {
-    display: block;
+/* Remove the old mobile styles that might be conflicting */
+@media (max-width: 480px) {
+    .nav-links {
+        gap: 1rem;
+        font-size: 0.9rem; /* This was affecting the button */
+    }
 }
         
         .material-symbols-outlined {
