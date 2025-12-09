@@ -18,6 +18,10 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             line-height: 1.6;
@@ -1062,6 +1066,7 @@
         contactForm.reset();
     }
 
+    // Only attach click handlers to modal buttons
     navContactBtn.addEventListener('click', openModal);
     heroContactBtn.addEventListener('click', openModal);
     contactFormBtn.addEventListener('click', openModal);
@@ -1124,35 +1129,6 @@
             submitBtn.disabled = false;
             submitBtn.textContent = 'Send Message';
         }
-    });
-
-    // Handle nav link clicks for smooth scrolling
-    document.querySelectorAll('a[href^="#"]:not([href="#"])').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            // Don't handle clicks on modal buttons
-            if (this.id === 'navContactBtn' || 
-                this.id === 'heroContactBtn' || 
-                this.id === 'contactFormBtn' ||
-                this.classList.contains('nav-cta-button')) {
-                return;
-            }
-            
-            e.preventDefault();
-            
-            const targetId = this.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
-            
-            if (targetElement) {
-                // Calculate position, accounting for fixed navbar
-                const navbarHeight = document.getElementById('navbar').offsetHeight;
-                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
-                
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
-            }
-        });
     });
 </script>
 </body>
