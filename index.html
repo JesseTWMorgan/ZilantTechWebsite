@@ -19,7 +19,7 @@
         }
 
         html {
-            scroll-behavior: smooth;
+            scroll-behavior: smooth; /* Only here, not in body */
         }
 
         body {
@@ -28,7 +28,7 @@
             color: #e0e0e0;
             background: #0a0a0a;
             overflow-x: hidden;
-            scroll-behavior: smooth;
+            /* Removed scroll-behavior from here */
         }
 
         .material-symbols-outlined {
@@ -612,6 +612,10 @@
             padding: 2rem;
         }
 
+        body.modal-open {
+            overflow: hidden; /* Prevent scrolling when modal is open */
+        }
+
         .contact-form-modal {
             background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
             border-radius: 20px;
@@ -1037,6 +1041,33 @@
         }
     });
 
+    // Smooth scrolling for nav links
+    document.querySelectorAll('.nav-links a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return; // Skip the modal button
+            
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                // Close modal if open
+                if (modal.classList.contains('active')) {
+                    closeModal();
+                }
+                
+                // Calculate position, accounting for fixed navbar
+                const navbarHeight = document.getElementById('navbar').offsetHeight;
+                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
     // Contact Form Modal
     const modal = document.getElementById('contactModal');
     const closeModalBtn = document.getElementById('closeModal');
@@ -1051,15 +1082,16 @@
     function openModal(e) {
         e.preventDefault();
         modal.classList.add('active');
-        document.body.style.overflow = 'hidden';
+        document.body.classList.add('modal-open'); // Add class to body
     }
 
     // Close modal
     function closeModal() {
         modal.classList.remove('active');
-        document.body.style.overflow = '';
+        document.body.classList.remove('modal-open'); // Remove class from body
         formMessage.className = 'form-message';
         formMessage.textContent = '';
+        contactForm.reset();
     }
 
     navContactBtn.addEventListener('click', openModal);
