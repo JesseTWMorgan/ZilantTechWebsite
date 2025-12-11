@@ -623,6 +623,188 @@
             to { transform: rotate(360deg); }
         }
 
+        /* Testimonials Section */
+.testimonials {
+    padding: 8rem 5%;
+    background: linear-gradient(135deg, #0f0f0f 0%, #1a0a2e 50%, #0f0f0f 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.testimonials::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 70% 50%, rgba(139, 69, 255, 0.05) 0%, transparent 50%);
+}
+
+.testimonials-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.testimonials-wrapper {
+    position: relative;
+    padding: 0 60px;
+}
+
+.testimonials-track {
+    display: flex;
+    gap: 2rem;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding: 2rem 0;
+}
+
+.testimonials-track::-webkit-scrollbar {
+    display: none;
+}
+
+.testimonial-card {
+    min-width: 400px;
+    background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+    border-radius: 20px;
+    padding: 2.5rem;
+    border: 1px solid rgba(139, 69, 255, 0.2);
+    position: relative;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(139, 69, 255, 0.4);
+    box-shadow: 0 20px 60px rgba(139, 69, 255, 0.2);
+}
+
+.testimonial-card::before {
+    content: '"';
+    position: absolute;
+    top: 1rem;
+    left: 1.5rem;
+    font-size: 4rem;
+    color: rgba(139, 69, 255, 0.3);
+    font-family: Georgia, serif;
+    line-height: 1;
+}
+
+.testimonial-content {
+    margin-bottom: 1.5rem;
+    color: #b0b0b0;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    position: relative;
+    z-index: 1;
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.author-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #8b45ff 0%, #6a1b9a 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+.author-info h4 {
+    color: #ffffff;
+    font-size: 1.1rem;
+    margin-bottom: 0.2rem;
+}
+
+.author-info p {
+    color: #888;
+    font-size: 0.9rem;
+}
+
+.testimonial-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: linear-gradient(135deg, #8b45ff 0%, #6a1b9a 100%);
+    border: none;
+    color: white;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 10;
+    box-shadow: 0 5px 15px rgba(139, 69, 255, 0.3);
+}
+
+.testimonial-arrow:hover {
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 8px 20px rgba(139, 69, 255, 0.5);
+}
+
+.testimonial-arrow.left {
+    left: 0;
+}
+
+.testimonial-arrow.right {
+    right: 0;
+}
+
+.testimonial-arrow span {
+    font-size: 1.5rem;
+}
+
+@media (max-width: 968px) {
+    .testimonials-wrapper {
+        padding: 0 50px;
+    }
+    
+    .testimonial-card {
+        min-width: 350px;
+    }
+    
+    .testimonial-arrow {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .testimonials-wrapper {
+        padding: 0 40px;
+    }
+    
+    .testimonial-card {
+        min-width: 280px;
+        padding: 2rem;
+    }
+    
+    .testimonial-arrow {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .testimonial-arrow span {
+        font-size: 1.2rem;
+    }
+}
+
         /* Contact Section */
         .contact {
             padding: 8rem 5%;
@@ -969,6 +1151,7 @@
             <li><a href="#home" class="nav-link">Home</a></li>
             <li><a href="#services" class="nav-link">Services</a></li>
             <li><a href="#about" class="nav-link">About</a></li>
+            <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
             <li><a href="#contact" class="nav-link">Contact</a></li>
             <li><a href="#" class="nav-cta-button" id="navContactBtn">Get In Touch</a></li>
         </ul>
@@ -1102,6 +1285,90 @@
             </div>
         </div>
     </section>
+
+    <section class="testimonials" id="testimonials">
+    <div class="testimonials-container">
+        <h2 class="section-title">What Creators Say</h2>
+        <p class="section-subtitle">Don't just take our word for it</p>
+        
+        <div class="testimonials-wrapper">
+            <button class="testimonial-arrow left" id="scrollLeft">
+                <span class="material-symbols-outlined">chevron_left</span>
+            </button>
+            
+            <div class="testimonials-track" id="testimonialsTrack">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        Working with Zilant Tech completely transformed my streaming setup. They helped me optimize everything from audio to overlays, and now my streams look incredibly professional. Best investment I've made!
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">SM</div>
+                        <div class="author-info">
+                            <h4>Sarah M.</h4>
+                            <p>Twitch Partner</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        I was struggling with constant tech issues during my streams. Zilant not only fixed everything but taught me how to prevent problems in the future. Their remote support is fantastic!
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">JD</div>
+                        <div class="author-info">
+                            <h4>Jake D.</h4>
+                            <p>YouTube Gaming Creator</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        The branding package they created for my channel was exactly what I envisioned. The emotes, overlays, and Discord setup have taken my community to the next level. Highly recommend!
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">AL</div>
+                        <div class="author-info">
+                            <h4>Alex L.</h4>
+                            <p>Content Creator</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        Built my streaming PC with their guidance and couldn't be happier. They made sure every component was perfect for my needs and budget. Plus, the ongoing support has been invaluable.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">MC</div>
+                        <div class="author-info">
+                            <h4>Mike C.</h4>
+                            <p>Variety Streamer</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        As a new streamer, I was overwhelmed by all the technical aspects. Zilant Tech walked me through everything step by step. They're patient, knowledgeable, and genuinely care about your success.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">ER</div>
+                        <div class="author-info">
+                            <h4>Emily R.</h4>
+                            <p>Aspiring Streamer</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <button class="testimonial-arrow right" id="scrollRight">
+                <span class="material-symbols-outlined">chevron_right</span>
+            </button>
+        </div>
+    </div>
+</section>
 
     <section class="contact" id="contact">
         <h2>Ready to Level Up?</h2>
@@ -1329,6 +1596,61 @@ contactForm.addEventListener('submit', async (e) => {
 
 // Prevent body scroll when menu is open
 document.body.style.overflowX = 'hidden';
+
+// Testimonials Scroll Functionality
+const testimonialsTrack = document.getElementById('testimonialsTrack');
+const scrollLeftBtn = document.getElementById('scrollLeft');
+const scrollRightBtn = document.getElementById('scrollRight');
+
+if (testimonialsTrack && scrollLeftBtn && scrollRightBtn) {
+    const scrollAmount = 450;
+    
+    scrollRightBtn.addEventListener('click', () => {
+        testimonialsTrack.scrollBy({
+            left: scrollAmount,
+            behavior: 'smooth'
+        });
+    });
+    
+    scrollLeftBtn.addEventListener('click', () => {
+        testimonialsTrack.scrollBy({
+            left: -scrollAmount,
+            behavior: 'smooth'
+        });
+    });
+    
+    // Touch/swipe support for mobile
+    let touchStartX = 0;
+    let touchEndX = 0;
+    
+    testimonialsTrack.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+    });
+    
+    testimonialsTrack.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+    });
+    
+    function handleSwipe() {
+        if (touchStartX - touchEndX > 50) {
+            // Swipe left
+            testimonialsTrack.scrollBy({
+                left: scrollAmount,
+                behavior: 'smooth'
+            });
+        }
+        
+        if (touchEndX - touchStartX > 50) {
+            // Swipe right
+            testimonialsTrack.scrollBy({
+                left: -scrollAmount,
+                behavior: 'smooth'
+            });
+        }
+    }
+}
+
 </script>
 </body>
 </html>
