@@ -661,6 +661,7 @@
     scrollbar-width: none;
     -ms-overflow-style: none;
     padding: 2rem 0;
+    scroll-snap-type: x mandatory;
 }
 
 .testimonials-track::-webkit-scrollbar {
@@ -678,6 +679,7 @@
     flex-shrink: 0;
     transition: all 0.3s ease;
     display: flex;
+    scroll-snap-align: center;
     flex-direction: column;
     min-height: 280px;
 }
@@ -1623,20 +1625,32 @@ const scrollLeftBtn = document.getElementById('scrollLeft');
 const scrollRightBtn = document.getElementById('scrollRight');
 
 if (testimonialsTrack && scrollLeftBtn && scrollRightBtn) {
-    function getCardWidth() {
+    function getScrollAmount() {
         const card = testimonialsTrack.querySelector('.testimonial-card');
-        const cardStyle = window.getComputedStyle(card);
-        const cardWidth = card.offsetWidth;
+        const trackRect = testimonialsTrack.getBoundingClientRect();
+        const cardRect = card.getBoundingClientRect();
         const gap = parseFloat(window.getComputedStyle(testimonialsTrack).gap);
-        return cardWidth + gap;
+        
+        // Calculate to center the next card
+        return cardRect.width + gap;
+    }
+    
+    function scrollToNearestCard(direction) {
+        const scrollAmount = getScrollAmount();
+        const targetScroll = testimonialsTrack.scrollLeft + (scrollAmount * direction);
+        
+        testimonialsTrack.scrollTo({
+            left: targetScroll,
+            behavior: 'smooth'
+        });
     }
     
     scrollRightBtn.addEventListener('click', () => {
-        const scrollAmount = getCardWidth();
-        testimonialsTrack.scrollBy({
-            left: scrollAmount,
-            behavior: 'smooth'
-        });
+        scrollToNearestCard(1);
+    });
+    
+    scrollLeftBtn.addEventListener('click', () => {
+        scrollToNearestCard(-1);
     });
     
     scrollLeftBtn.addEventListener('click', () => {
@@ -1661,22 +1675,14 @@ if (testimonialsTrack && scrollLeftBtn && scrollRightBtn) {
     });
     
     function handleSwipe() {
-        const scrollAmount = getCardWidth();
-        
         if (touchStartX - touchEndX > 50) {
             // Swipe left
-            testimonialsTrack.scrollBy({
-                left: scrollAmount,
-                behavior: 'smooth'
-            });
+            scrollToNearestCard(1);
         }
         
         if (touchEndX - touchStartX > 50) {
             // Swipe right
-            testimonialsTrack.scrollBy({
-                left: -scrollAmount,
-                behavior: 'smooth'
-            });
+            scrollToNearestCard(-1);
         }
     }
 }
