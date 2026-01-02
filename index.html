@@ -671,7 +671,6 @@
     scrollbar-width: none;
     -ms-overflow-style: none;
     padding: 2rem 0;
-    scroll-snap-type: x mandatory;
 }
 
 .testimonials-track::-webkit-scrollbar {
@@ -689,7 +688,6 @@
     flex-shrink: 0;
     transition: all 0.3s ease;
     display: flex;
-    scroll-snap-align: center;
     flex-direction: column;
     min-height: 280px;
 }
@@ -1643,64 +1641,78 @@ const scrollLeftBtn = document.getElementById('scrollLeft');
 const scrollRightBtn = document.getElementById('scrollRight');
 
 if (testimonialsTrack && scrollLeftBtn && scrollRightBtn) {
+    let isScrolling = false;
+    
     function getScrollAmount() {
-        const card = testimonialsTrack.querySelector('.testimonial-card');
-        const trackRect = testimonialsTrack.getBoundingClientRect();
-        const cardRect = card.getBoundingClientRect();
-        const gap = parseFloat(window.getComputedStyle(testimonialsTrack).gap);
+        const cards = testimonialsTrack.querySelectorAll('.testimonial-card');
+        if (cards.length === 0) return 0;
         
-        // Calculate to center the next card
-        return cardRect.width + gap;
+        const card = cards[0];
+        const cardWidth = card.offsetWidth;
+        const gap = parseFloat(window.getComputedStyle(testimonialsTrack).gap) || 32;
+        
+        return cardWidth + gap;
     }
     
     function scrollToNearestCard(direction) {
+        if (isScrolling) return;
+        isScrolling = true;
+        
         const scrollAmount = getScrollAmount();
-        const targetScroll = testimonialsTrack.scrollLeft + (scrollAmount * direction);
+        const currentScroll = testimonialsTrack.scrollLeft;
+        const targetScroll = currentScroll + (scrollAmount * direction);
         
         testimonialsTrack.scrollTo({
             left: targetScroll,
             behavior: 'smooth'
         });
+        
+        setTimeout(() => {
+            isScrolling = false;
+        }, 600);
     }
     
-    scrollRightBtn.addEventListener('click', () => {
+    scrollRightBtn.addEventListener('click', (e) => {
+        e.preventDefault();
         scrollToNearestCard(1);
     });
     
-    scrollLeftBtn.addEventListener('click', () => {
+    scrollLeftBtn.addEventListener('click', (e) => {
+        e.preventDefault();
         scrollToNearestCard(-1);
-    });
-    
-    scrollLeftBtn.addEventListener('click', () => {
-        const scrollAmount = getCardWidth();
-        testimonialsTrack.scrollBy({
-            left: -scrollAmount,
-            behavior: 'smooth'
-        });
     });
     
     // Touch/swipe support for mobile
     let touchStartX = 0;
     let touchEndX = 0;
+    let touchStartTime = 0;
     
     testimonialsTrack.addEventListener('touchstart', (e) => {
         touchStartX = e.changedTouches[0].screenX;
-    });
+        touchStartTime = Date.now();
+    }, { passive: true });
     
     testimonialsTrack.addEventListener('touchend', (e) => {
         touchEndX = e.changedTouches[0].screenX;
-        handleSwipe();
-    });
+        const touchDuration = Date.now() - touchStartTime;
+        
+        // Only trigger swipe if it was quick (under 300ms) and significant distance
+        if (touchDuration < 300) {
+            handleSwipe();
+        }
+    }, { passive: true });
     
     function handleSwipe() {
-        if (touchStartX - touchEndX > 50) {
-            // Swipe left
-            scrollToNearestCard(1);
-        }
+        const swipeDistance = touchStartX - touchEndX;
         
-        if (touchEndX - touchStartX > 50) {
-            // Swipe right
-            scrollToNearestCard(-1);
+        if (Math.abs(swipeDistance) > 75) {
+            if (swipeDistance > 0) {
+                // Swipe left
+                scrollToNearestCard(1);
+            } else {
+                // Swipe right
+                scrollToNearestCard(-1);
+            }
         }
     }
 }
