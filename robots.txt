@@ -1,2 +1,3 @@
 User-agent: *
 Disallow: /Images/ZilantTeam.png
+Disallow: /Images/Xylphx01.png
