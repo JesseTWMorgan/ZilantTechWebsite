@@ -921,6 +921,33 @@
         footer p {
             font-size: 0.95rem;
         }
+            
+        .footer-links {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(139, 69, 255, 0.1);
+        }
+
+        .footer-links a {
+            color: #8b45ff;
+            text-decoration: underline;
+            font-size: 0.95rem;
+            margin: 0 1rem;
+            transition: color 0.3s ease;
+            display: inline-block;
+            padding: 0.5rem 0;
+        }
+
+        .footer-links a:hover {
+            color: #9d5aff;
+        }
+
+        @media (max-width: 480px) {
+            .footer-links a {
+                display: block;
+                margin: 0.5rem 0;
+            }
+        }
 
         /* Contact Form Modal */
         .modal-overlay {
@@ -1425,9 +1452,13 @@
     </section>
 
     <footer>
-        <p>&copy; 2026 Zilant Tech Solutions. All rights reserved.</p>
-        <p style="margin-top: 0.5rem; font-size: 0.85rem;">Serving Creators Locally & Across The Globe</p>
-    </footer>
+    <p>&copy; 2026 Zilant Tech Solutions. All rights reserved.</p>
+    <p style="margin-top: 0.5rem; font-size: 0.85rem;">Serving Creators Locally & Across The Globe</p>
+    <div class="footer-links">
+        <a href="https://docs.google.com/document/d/1K5hnTeYrHwiNv3dObnvRijgvvWTY8rM8pYIS2gsvRBc/edit?usp=sharing" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+        <a href="https://docs.google.com/document/d/1DDUkDmucMv43lgHetPlcZ6wj1TKb0ohFFivVw91VjwU/edit?usp=sharing" target="_blank" rel="noopener noreferrer">Terms of Service</a>
+    </div>
+</footer>
 
     <!-- Contact Form Modal -->
     <div class="modal-overlay" id="contactModal">
