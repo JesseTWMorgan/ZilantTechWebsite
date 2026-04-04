@@ -1183,6 +1183,109 @@
                 font-size: 2rem;
             }
         }
+
+            /* Promotional Popup */
+.promo-popup {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+    border: 1px solid rgba(139, 69, 255, 0.3);
+    border-radius: 15px;
+    padding: 1.5rem;
+    max-width: 320px;
+    box-shadow: 0 10px 40px rgba(139, 69, 255, 0.4);
+    z-index: 999;
+    animation: slideInLeft 0.5s ease;
+    display: none;
+}
+
+.promo-popup.active {
+    display: block;
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.promo-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: #888;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    line-height: 1;
+    padding: 0;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.promo-close:hover {
+    color: #8b45ff;
+}
+
+.promo-content h3 {
+    color: #8b45ff;
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    padding-right: 20px;
+}
+
+.promo-content p {
+    color: #b0b0b0;
+    font-size: 0.95rem;
+    margin-bottom: 0.3rem;
+}
+
+.promo-content .terms {
+    color: #666;
+    font-size: 0.75rem;
+    font-style: italic;
+    margin-bottom: 1rem;
+}
+
+.promo-button {
+    width: 100%;
+    padding: 0.8rem;
+    background: linear-gradient(135deg, #8b45ff 0%, #6a1b9a 100%);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(139, 69, 255, 0.3);
+}
+
+.promo-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(139, 69, 255, 0.5);
+    background: linear-gradient(135deg, #9d5aff 0%, #7a2bb0 100%);
+}
+
+@media (max-width: 480px) {
+    .promo-popup {
+        left: 10px;
+        right: 10px;
+        max-width: calc(100% - 20px);
+        bottom: 10px;
+    }
+}
     </style>
 </head>
 <body>
@@ -1242,6 +1345,7 @@
                     <li>Multi-platform streaming configuration</li>
                     <li>Capture card installation and troubleshooting</li>
                     <li>Greenscreen and lighting setup assistance</li>
+                    <li>Stream auditing and performance analysis</li>
                 </ul>
             </div>
             
@@ -1491,6 +1595,17 @@
             </form>
         </div>
     </div>
+
+        <!-- Promotional Popup -->
+<div class="promo-popup" id="promoPopup">
+    <button class="promo-close" id="promoClose">&times;</button>
+    <div class="promo-content">
+        <h3>Free Stream Audits</h3>
+        <p>for new clients*</p>
+        <p class="terms">*terms and conditions apply</p>
+        <button class="promo-button" id="promoLearnMore">Learn More</button>
+    </div>
+</div>
 
 <script>
    // Smooth scroll implementation
@@ -1743,6 +1858,28 @@ if (testimonialsTrack && scrollLeftBtn && scrollRightBtn) {
         }
     }
 }
+
+        // Promotional Popup
+const promoPopup = document.getElementById('promoPopup');
+const promoClose = document.getElementById('promoClose');
+const promoLearnMore = document.getElementById('promoLearnMore');
+
+// Show popup after 3 seconds
+setTimeout(() => {
+    promoPopup.classList.add('active');
+}, 3000);
+
+// Close popup
+promoClose.addEventListener('click', () => {
+    promoPopup.classList.remove('active');
+});
+
+// Learn More button - close popup and open contact form
+promoLearnMore.addEventListener('click', () => {
+    promoPopup.classList.remove('active');
+    modal.classList.add('active');
+    document.body.classList.add('modal-open');
+});
 
 </script>
 </body>
