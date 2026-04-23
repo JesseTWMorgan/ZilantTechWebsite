@@ -429,11 +429,11 @@
         }
 
         .service-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2.5rem;
-            margin-bottom: 5rem;
-        }
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+    margin-bottom: 5rem;
+}
 
         .service-card {
             padding: 2.5rem 2rem;
@@ -510,20 +510,28 @@
 
             .service-featured-image {
     width: 100%;
-    max-width: 100%;
+    max-width: 600px;
     height: auto;
     border-radius: 15px;
-    margin-bottom: 1.5rem;
+    margin: 0 auto 1.5rem auto;
+    display: block;
     border: 1px solid rgba(139, 69, 255, 0.2);
     box-shadow: 0 5px 20px rgba(139, 69, 255, 0.2);
 }
-            service-card.featured {
-    grid-column: span 2;
+            .service-card.featured {
+    grid-column: 1 / -1;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 @media (max-width: 968px) {
+    .service-grid {
+        grid-template-columns: 1fr;
+    }
+    
     .service-card.featured {
-        grid-column: span 1;
+        grid-column: 1;
+        max-width: 100%;
     }
 }
 
@@ -685,12 +693,14 @@
 .testimonials-track {
     display: flex;
     gap: 2rem;
-    overflow-x: scroll;
+    overflow-x: auto;
+    overflow-y: hidden;
     scroll-behavior: smooth;
     scrollbar-width: none;
     -ms-overflow-style: none;
     padding: 2rem 0;
     scroll-snap-type: x mandatory;
+    flex-wrap: nowrap;
 }
 
 .testimonials-track::-webkit-scrollbar {
@@ -699,8 +709,9 @@
 
 .testimonial-card {
     min-width: 400px;
+    width: 400px;
     max-width: 400px;
-    flex: 0 0 400px;
+    flex-shrink: 0;
     background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
     border-radius: 20px;
     padding: 2.5rem;
@@ -823,6 +834,7 @@
     
     .testimonial-card {
         min-width: 350px;
+        width: 350px;
         max-width: 350px;
     }
     
@@ -839,6 +851,7 @@
     
     .testimonial-card {
         min-width: 280px;
+        width: 280px;
         max-width: 280px;
         padding: 2rem;
     }
@@ -1507,70 +1520,71 @@
         Prices range and are subject to changes including price adjustments due to payment flexibility, payment plans, or increases due to workload.
     </p>
     
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 3rem;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1.5rem; margin-top: 3rem;">
         <div style="padding: 1.5rem; background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%); border-radius: 15px; border: 1px solid rgba(139, 69, 255, 0.1);">
-            <h4 style="color: #8b45ff; margin-bottom: 0.5rem; font-size: 1.1rem;">30 Min Troubleshooting</h4>
+            <h4 style="color: #8b45ff; margin-bottom: 0.5rem; font-size: 1rem;">30 Min Troubleshooting</h4>
             <p style="color: #ffffff; font-size: 1.5rem; font-weight: 600;">$15.00</p>
         </div>
         
         <div style="padding: 1.5rem; background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%); border-radius: 15px; border: 1px solid rgba(139, 69, 255, 0.1);">
-            <h4 style="color: #8b45ff; margin-bottom: 0.5rem; font-size: 1.1rem;">30 Minute Stream Audit</h4>
+            <h4 style="color: #8b45ff; margin-bottom: 0.5rem; font-size: 1rem;">30 Minute Stream Audit</h4>
             <p style="color: #ffffff; font-size: 1.5rem; font-weight: 600; margin-bottom: 0.5rem;">$25.00</p>
-            <p style="color: #888; font-size: 0.85rem;">*Unless promotion is applied</p>
+            <p style="color: #888; font-size: 0.8rem;">*Unless promotion applied</p>
         </div>
 
-        <div style="padding: 1.5rem; background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%); border-radius: 15px; border: 1px solid rgba(139, 69, 255, 0.1);">
-            <h4 style="color: #8b45ff; margin-bottom: 0.5rem; font-size: 1.1rem;">Pre-Stream Emergency Fix</h4>
+            <div style="padding: 1.5rem; background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%); border-radius: 15px; border: 1px solid rgba(139, 69, 255, 0.1);">
+            <h4 style="color: #8b45ff; margin-bottom: 0.5rem; font-size: 1rem;">Pre-Stream Emergency</h4>
             <p style="color: #ffffff; font-size: 1.5rem; font-weight: 600;">$30.00</p>
-            <p style="color: #888; font-size: 0.85rem;">Subsequent Hour</p>
+            <p style="color: #888; font-size: 0.8rem;">Subsequent Hour</p>
         </div>
         
         <div style="padding: 1.5rem; background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%); border-radius: 15px; border: 1px solid rgba(139, 69, 255, 0.1);">
-            <h4 style="color: #8b45ff; margin-bottom: 0.5rem; font-size: 1.1rem;">Pre-Stream Emergency Fix</h4>
+            <h4 style="color: #8b45ff; margin-bottom: 0.5rem; font-size: 1rem;">Pre-Stream Emergency</h4>
             <p style="color: #ffffff; font-size: 1.5rem; font-weight: 600;">$15.00</p>
-            <p style="color: #888; font-size: 0.85rem;">Under 1 Hour</p>
+            <p style="color: #888; font-size: 0.8rem;">Under 1 Hour</p>
         </div>
         
         <div style="padding: 1.5rem; background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%); border-radius: 15px; border: 1px solid rgba(139, 69, 255, 0.1);">
-            <h4 style="color: #8b45ff; margin-bottom: 0.5rem; font-size: 1.1rem;">Service Per Subsequent Hour</h4>
+            <h4 style="color: #8b45ff; margin-bottom: 0.5rem; font-size: 1rem;">Service Per Subsequent Hour</h4>
             <p style="color: #ffffff; font-size: 1.5rem; font-weight: 600;">$40.00</p>
         </div>
-    </div>
         
         <div style="padding: 1.5rem; background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%); border-radius: 15px; border: 1px solid rgba(139, 69, 255, 0.1);">
-            <h4 style="color: #8b45ff; margin-bottom: 0.5rem; font-size: 1.1rem;">Advanced I.T. Service Per Hour</h4>
+            <h4 style="color: #8b45ff; margin-bottom: 0.5rem; font-size: 1rem;">Advanced I.T. Per Hour</h4>
             <p style="color: #ffffff; font-size: 1.5rem; font-weight: 600;">$50.00</p>
         </div>
         
         <div style="padding: 1.5rem; background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%); border-radius: 15px; border: 1px solid rgba(139, 69, 255, 0.1);">
-            <h4 style="color: #8b45ff; margin-bottom: 0.5rem; font-size: 1.1rem;">Minimum Service Charge</h4>
+            <h4 style="color: #8b45ff; margin-bottom: 0.5rem; font-size: 1rem;">Minimum Service Charge</h4>
             <p style="color: #ffffff; font-size: 1.5rem; font-weight: 600;">$15.00</p>
         </div>
         
         <div style="padding: 1.5rem; background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%); border-radius: 15px; border: 1px solid rgba(139, 69, 255, 0.1);">
-            <h4 style="color: #8b45ff; margin-bottom: 0.5rem; font-size: 1.1rem;">On Site Initial Deposit</h4>
+            <h4 style="color: #8b45ff; margin-bottom: 0.5rem; font-size: 1rem;">On Site Initial Deposit</h4>
             <p style="color: #ffffff; font-size: 1.5rem; font-weight: 600;">$100.00</p>
+        <p style="color: #888; font-size: 0.8rem;">Refundable</p>
         </div>
         
         <div style="padding: 1.5rem; background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%); border-radius: 15px; border: 1px solid rgba(139, 69, 255, 0.1);">
-            <h4 style="color: #8b45ff; margin-bottom: 0.5rem; font-size: 1.1rem;">Onsite Support Fee</h4>
+            <h4 style="color: #8b45ff; margin-bottom: 0.5rem; font-size: 1rem;">Onsite Support Fee</h4>
             <p style="color: #ffffff; font-size: 1.5rem; font-weight: 600;">$26.00</p>
         </div>
         
         <div style="padding: 1.5rem; background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%); border-radius: 15px; border: 1px solid rgba(139, 69, 255, 0.1);">
-            <h4 style="color: #8b45ff; margin-bottom: 0.5rem; font-size: 1.1rem;">Package 1 - Get Streaming</h4>
+            <h4 style="color: #8b45ff; margin-bottom: 0.5rem; font-size: 1rem;">Package 1 - Get Streaming</h4>
             <p style="color: #ffffff; font-size: 1.5rem; font-weight: 600;">$80.00</p>
         </div>
         
         <div style="padding: 1.5rem; background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%); border-radius: 15px; border: 1px solid rgba(139, 69, 255, 0.1);">
-            <h4 style="color: #8b45ff; margin-bottom: 0.5rem; font-size: 1.1rem;">Package 2 - Level Up</h4>
+            <h4 style="color: #8b45ff; margin-bottom: 0.5rem; font-size: 1rem;">Package 2 - Level Up</h4>
             <p style="color: #ffffff; font-size: 1.5rem; font-weight: 600;">$200.00</p>
         </div>
         
         <div style="padding: 1.5rem; background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%); border-radius: 15px; border: 1px solid rgba(139, 69, 255, 0.1);">
-            <h4 style="color: #8b45ff; margin-bottom: 0.5rem; font-size: 1.1rem;">Package 3 - Full Studio</h4>
+            <h4 style="color: #8b45ff; margin-bottom: 0.5rem; font-size: 1rem;">Package 3 - Full Studio</h4>
             <p style="color: #ffffff; font-size: 1.5rem; font-weight: 600;">$500.00</p>
         </div>
+    </div>
     
     <p style="text-align: center; margin-top: 3rem; color: #888; font-size: 0.95rem;">
         Contact us for detailed package breakdowns and custom quotes tailored to your specific needs.
