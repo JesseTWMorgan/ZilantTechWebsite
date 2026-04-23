@@ -694,13 +694,10 @@
     display: flex;
     gap: 2rem;
     overflow-x: auto;
-    overflow-y: hidden;
     scroll-behavior: smooth;
     scrollbar-width: none;
     -ms-overflow-style: none;
     padding: 2rem 0;
-    scroll-snap-type: x mandatory;
-    flex-wrap: nowrap;
 }
 
 .testimonials-track::-webkit-scrollbar {
@@ -709,19 +706,17 @@
 
 .testimonial-card {
     min-width: 400px;
-    width: 400px;
     max-width: 400px;
-    flex-shrink: 0;
     background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
     border-radius: 20px;
     padding: 2.5rem;
     border: 1px solid rgba(139, 69, 255, 0.2);
     position: relative;
+    flex-shrink: 0;
     transition: all 0.3s ease;
     display: flex;
     flex-direction: column;
     min-height: 280px;
-    scroll-snap-align: start;
 }
 
 .testimonial-card:hover {
@@ -834,7 +829,6 @@
     
     .testimonial-card {
         min-width: 350px;
-        width: 350px;
         max-width: 350px;
     }
     
@@ -851,7 +845,6 @@
     
     .testimonial-card {
         min-width: 280px;
-        width: 280px;
         max-width: 280px;
         padding: 2rem;
     }
@@ -865,6 +858,7 @@
         font-size: 1.2rem;
     }
 }
+
 
         /* Contact Section */
         .contact {
@@ -1367,6 +1361,31 @@
         <p class="section-subtitle">Personalized solutions for all creators, from beginners to professionals, with pricing to match your budget.</p>
         
         <div class="service-grid">
+
+                <div class="service-card featured">
+    <span class="material-symbols-outlined service-icon">palette</span>
+    <h3>Creative & Branding Services</h3>
+    <video autoplay loop muted playsinline class="service-featured-image">
+        <source src="Images/overlay-preview.webm" type="video/webm">
+        Your browser does not support the video tag.
+    </video>
+    <p><strong>Brand Identity Development:</strong></p>
+    <ul>
+        <li>Logo design</li>
+        <li>Brand style guides</li>
+        <li>Channel art</li>
+        <li>Overlay and alert design</li>
+        <li>Custom emotes and badges</li>
+        <li>Sub alert animations</li>
+        <li>Panel graphics</li>
+    </ul>
+    <p style="margin-top: 1rem;"><strong>Content Support:</strong></p>
+    <ul>
+        <li>Twitch to YouTube Shorts setup and workflow assistance</li>
+        <li>Thumbnail creation and optimization</li>
+    </ul>
+</div>
+                
     <div class="service-card">
         <span class="material-symbols-outlined service-icon">build</span>
         <h3>Technical Support Services</h3>
@@ -1442,30 +1461,6 @@
             <li>VOD archive management</li>
         </ul>
     </div>
-    
-    <div class="service-card featured">
-    <span class="material-symbols-outlined service-icon">palette</span>
-    <h3>Creative & Branding Services</h3>
-    <video autoplay loop muted playsinline class="service-featured-image">
-        <source src="Images/overlay-preview.webm" type="video/webm">
-        Your browser does not support the video tag.
-    </video>
-    <p><strong>Brand Identity Development:</strong></p>
-    <ul>
-        <li>Logo design</li>
-        <li>Brand style guides</li>
-        <li>Channel art</li>
-        <li>Overlay and alert design</li>
-        <li>Custom emotes and badges</li>
-        <li>Sub alert animations</li>
-        <li>Panel graphics</li>
-    </ul>
-    <p style="margin-top: 1rem;"><strong>Content Support:</strong></p>
-    <ul>
-        <li>Twitch to YouTube Shorts setup and workflow assistance</li>
-        <li>Thumbnail creation and optimization</li>
-    </ul>
-</div>
     
     <div class="service-card">
         <span class="material-symbols-outlined service-icon">groups</span>
@@ -1616,18 +1611,22 @@
                 <span class="material-symbols-outlined">chevron_left</span>
             </button>
             
-            <div class="testimonial-card">
-    <div class="testimonial-content">
-        Jesse from Zilant Tech Solutions has been my go-to guy for years, even before they started the company, setting up my stream and troubleshooting any I.T. issues. They designed my overlays and branding, and it looks amazing! They're super reliable, handling everything remotely which is so convenient!
-    </div>
-    <div class="testimonial-author">
-        <div class="author-avatar"><img src="https://static-cdn.jtvnw.net/jtv_user_pictures/e6c74f47-6b2f-4775-a05f-c7b56d7011a7-profile_image-150x150.png" alt="Miss_Geli"></div>
-        <div class="author-info">
-            <h4>Miss_Geli</h4>
-            <p>Twitch Affiliate</p>
-        </div>
-    </div>
-</div>
+            <div class="testimonials-track" id="testimonialsTrack">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        These tech have been my go-to for years even before Zilant, 
+                        setting up my stream and troubleshooting any I.T. issues.
+                        They designed my overlays and branding, and it looks amazing!
+                        They're super reliable, handling everything remotely which is so convenient!
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar"><img src="https://static-cdn.jtvnw.net/jtv_user_pictures/e6c74f47-6b2f-4775-a05f-c7b56d7011a7-profile_image-150x150.png" alt="Miss_Geli"></div>
+                        <div class="author-info">
+                            <h4>Miss_Geli</h4>
+                            <p>Twitch Affiliate</p>
+                        </div>
+                    </div>
+                </div>
                 
                 <div class="testimonial-card">
                     <div class="testimonial-content">
