@@ -1329,6 +1329,7 @@
         <ul class="nav-links" id="navLinks">
             <li><a href="#home" class="nav-link">Home</a></li>
             <li><a href="#services" class="nav-link">Services</a></li>
+            <li><a href="#pricing" class="nav-link">Pricing</a></li>
             <li><a href="#about" class="nav-link">About</a></li>
             <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
             <li><a href="#contact" class="nav-link">Contact</a></li>
@@ -1975,39 +1976,69 @@ if (testimonialsTrack && scrollLeftBtn && scrollRightBtn) {
         scrollToNearestCard(-1);
     });
     
-    // Touch/swipe support for mobile
+    // Improved touch/swipe support for mobile with snap correction
     let touchStartX = 0;
     let touchEndX = 0;
     let touchStartTime = 0;
+    let isDragging = false;
     
     testimonialsTrack.addEventListener('touchstart', (e) => {
         touchStartX = e.changedTouches[0].screenX;
         touchStartTime = Date.now();
+        isDragging = true;
+    }, { passive: true });
+    
+    testimonialsTrack.addEventListener('touchmove', (e) => {
+        if (isDragging) {
+            touchEndX = e.changedTouches[0].screenX;
+        }
     }, { passive: true });
     
     testimonialsTrack.addEventListener('touchend', (e) => {
-        touchEndX = e.changedTouches[0].screenX;
-        const touchDuration = Date.now() - touchStartTime;
+        if (!isDragging) return;
+        isDragging = false;
         
-        // Only trigger swipe if it was quick (under 300ms) and significant distance
-        if (touchDuration < 300) {
-            handleSwipe();
-        }
-    }, { passive: true });
-    
-    function handleSwipe() {
+        const touchDuration = Date.now() - touchStartTime;
         const swipeDistance = touchStartX - touchEndX;
         
-        if (Math.abs(swipeDistance) > 75) {
+        // Snap to nearest card after scroll
+        setTimeout(() => {
+            snapToNearestCard();
+        }, 100);
+        
+        // Quick swipe detection
+        if (touchDuration < 300 && Math.abs(swipeDistance) > 75) {
             if (swipeDistance > 0) {
-                // Swipe left
                 scrollToNearestCard(1);
             } else {
-                // Swipe right
                 scrollToNearestCard(-1);
             }
         }
+    }, { passive: true });
+    
+    // Snap to nearest card function
+    function snapToNearestCard() {
+        const scrollAmount = getScrollAmount();
+        const currentScroll = testimonialsTrack.scrollLeft;
+        const nearestCardIndex = Math.round(currentScroll / scrollAmount);
+        const targetScroll = nearestCardIndex * scrollAmount;
+        
+        testimonialsTrack.scrollTo({
+            left: targetScroll,
+            behavior: 'smooth'
+        });
     }
+    
+    // Also snap after regular scrolling stops
+    let scrollTimeout;
+    testimonialsTrack.addEventListener('scroll', () => {
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(() => {
+            if (!isScrolling && !isDragging) {
+                snapToNearestCard();
+            }
+        }, 150);
+    }, { passive: true });
 }
 
         // Promotional Popup
