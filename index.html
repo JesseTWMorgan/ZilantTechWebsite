@@ -277,7 +277,60 @@
         .nav-cta-button::after {
         display: none;
         }
+            
+.language-disclaimer {
+    background: linear-gradient(135deg, rgba(139, 69, 255, 0.1) 0%, rgba(139, 69, 255, 0.05) 100%);
+    border: 1px solid rgba(139, 69, 255, 0.2);
+    padding: 0.8rem 1.5rem;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
 
+.language-disclaimer.top {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    margin-top: 0;
+}
+
+.language-disclaimer.bottom {
+    margin-top: 0;
+}
+
+.language-disclaimer img {
+    width: 24px;
+    height: 16px;
+}
+
+.language-disclaimer span {
+    color: #b0b0b0;
+    font-size: 0.9rem;
+}
+
+/* Adjust hero padding for top disclaimer */
+.hero {
+    padding-top: 80px;
+}
+
+@media (max-width: 480px) {
+    .language-disclaimer {
+        padding: 0.6rem 1rem;
+    }
+    
+    .language-disclaimer span {
+        font-size: 0.8rem;
+    }
+    
+    .language-disclaimer img {
+        width: 20px;
+        height: 14px;
+    }
+}
         /* Hero Section */
         .hero {
             min-height: 100vh;
@@ -1311,6 +1364,12 @@
     </style>
 </head>
 <body>
+
+<div class="language-disclaimer top">
+    <img src="https://flagcdn.com/w40/gb.png" alt="English">
+    <span>All services are performed in English</span>
+</div>
+        
    <nav id="navbar">
     <div class="nav-container">
         <div class="logo-container">
@@ -1550,15 +1609,14 @@
         </div>
         
         <div style="padding: 1.5rem; background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%); border-radius: 15px; border: 1px solid rgba(139, 69, 255, 0.1);">
-            <h4 style="color: #8b45ff; margin-bottom: 0.5rem; font-size: 1rem;">On Site Initial Deposit</h4>
-            <p style="color: #ffffff; font-size: 1.5rem; font-weight: 600;">$100.00</p>
-        <p style="color: #888; font-size: 0.8rem;">Refundable</p>
-        </div>
+    <h4 style="color: #8b45ff; margin-bottom: 0.5rem; font-size: 1rem;">Branding Services</h4>
+    <p style="color: #ffffff; font-size: 1.3rem; font-weight: 600;">Please Contact</p>
+</div>
         
         <div style="padding: 1.5rem; background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%); border-radius: 15px; border: 1px solid rgba(139, 69, 255, 0.1);">
-            <h4 style="color: #8b45ff; margin-bottom: 0.5rem; font-size: 1rem;">Onsite Support Fee</h4>
-            <p style="color: #ffffff; font-size: 1.5rem; font-weight: 600;">$26.00</p>
-        </div>
+    <h4 style="color: #8b45ff; margin-bottom: 0.5rem; font-size: 1rem;">Equipment Installations</h4>
+    <p style="color: #ffffff; font-size: 1.3rem; font-weight: 600;">Please Contact</p>
+</div>
         
         <div style="padding: 1.5rem; background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%); border-radius: 15px; border: 1px solid rgba(139, 69, 255, 0.1);">
             <h4 style="color: #8b45ff; margin-bottom: 0.5rem; font-size: 1rem;">Package 1 - Get Streaming</h4>
@@ -1576,9 +1634,10 @@
         </div>
     </div>
     
-    <p style="text-align: center; margin-top: 3rem; color: #888; font-size: 0.95rem;">
-        Contact us for detailed package breakdowns and custom quotes tailored to your specific needs.
-    </p>
+    <p style="text-align: center; margin-top: 3rem; color: #c0c0c0; font-size: 1.05rem; line-height: 1.6;">
+    Contact us for detailed package breakdowns and custom quotes tailored to your specific needs.<br>
+    Our pricing is flexible and we care about your budget and needs. Let us know how we can best support your needs.
+</p>
 </section>
 
     <section class="about" id="about">
@@ -1587,7 +1646,7 @@
                 <h2>About Zilant Tech Solutions</h2>
                 <p>We're a dedicated team passionate about empowering content creators and streamers with the technology and creative tools they need to succeed.</p>
                 <p>Based in Edmonton, Alberta, we offer both local and remote services designed to eliminate technical barriers and enhance online presence, allowing creators to focus on what they do best—creating content.</p>
-                <p>From custom development to creative design, we've got your back every step of the way.</p>
+                <p>Whether you need tech support or creative design, we've got your back every step of the way.</p>
             </div>
             <div class="about-visual">
                 <h3>Your Vision, Our Commitment</h3>
@@ -1710,7 +1769,11 @@
 </section>
 
     <footer>
-    <p>&copy; 2026 Zilant Tech Solutions. All rights reserved.</p>
+    <div class="language-disclaimer bottom">
+        <img src="https://flagcdn.com/w40/gb.png" alt="English">
+        <span>All services are performed in English</span>
+    </div>
+    <p style="margin-top: 1.5rem;">&copy; 2026 Zilant Tech Solutions. All rights reserved.</p>
     <p style="margin-top: 0.5rem; font-size: 0.85rem;">Serving Creators Locally & Across The Globe</p>
     <div class="footer-links">
         <a href="https://drive.google.com/file/d/1HLuJyqR7c9NWzNnNcri6TWHxr6q-gVPx/view?usp=sharing" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
@@ -1744,6 +1807,11 @@
                 <button type="submit" class="form-submit" id="submitBtn">Send Message</button>
                 
                 <div class="form-message" id="formMessage"></div>
+
+<div class="language-disclaimer" style="margin-top: 1.5rem; border-radius: 10px;">
+    <img src="https://flagcdn.com/w40/gb.png" alt="English">
+    <span>All services are performed in English</span>
+</div>
             </form>
         </div>
     </div>
