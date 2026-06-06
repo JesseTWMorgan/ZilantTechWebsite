@@ -314,14 +314,6 @@
     font-size: 0.9rem;
 }
 
-/* Adjust nav and hero padding for top disclaimer */
-nav {
-}
-
-.hero {
-    padding-top: 180px;
-}
-
 @media (max-width: 480px) {
     .language-disclaimer {
         padding: 0.6rem 1rem;
@@ -334,10 +326,6 @@ nav {
     .language-disclaimer img {
         width: 20px;
         height: 14px;
-    }
-    
-    .hero {
-        padding-top: 160px;
     }
 }
         /* Hero Section */
@@ -1843,12 +1831,22 @@ nav {
 function updateNavPosition() {
     const disclaimer = document.querySelector('.language-disclaimer.top');
     const navbar = document.getElementById('navbar');
+    const hero = document.querySelector('.hero');
 
     if (disclaimer && navbar) {
         const disclaimerHeight = disclaimer.offsetHeight;
         navbar.style.top = disclaimerHeight + 'px';
+
+        // Push hero content below both the disclaimer and navbar
+        if (hero) {
+            const navHeight = navbar.offsetHeight;
+            hero.style.paddingTop = (disclaimerHeight + navHeight + 20) + 'px';
+        }
     }
 }
+
+updateNavPosition();
+window.addEventListener('resize', updateNavPosition);
 
 updateNavPosition();
 window.addEventListener('resize', updateNavPosition);        
