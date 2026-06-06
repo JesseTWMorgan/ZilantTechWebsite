@@ -316,7 +316,6 @@
 
 /* Adjust nav and hero padding for top disclaimer */
 nav {
-    top: 50px;
 }
 
 .hero {
@@ -1839,6 +1838,20 @@ nav {
 </div>
 
 <script>
+
+// Dynamically position navbar below the disclaimer
+function updateNavPosition() {
+    const disclaimer = document.querySelector('.language-disclaimer.top');
+    const navbar = document.getElementById('navbar');
+
+    if (disclaimer && navbar) {
+        const disclaimerHeight = disclaimer.offsetHeight;
+        navbar.style.top = disclaimerHeight + 'px';
+    }
+}
+
+updateNavPosition();
+window.addEventListener('resize', updateNavPosition);        
    // Smooth scroll implementation
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
